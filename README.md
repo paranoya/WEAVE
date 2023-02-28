@@ -3,7 +3,7 @@ Analysis of WEAVE first light data
 
 ## Raw data
 
-fiber
+Not yet
 
 ## L1 datacubes
 

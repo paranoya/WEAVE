@@ -15,9 +15,11 @@ import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib import colors
 
+work_dir = 'SV/20230512_13'
+file_name = 'single_3005695'
 #rss = fits.open('data/download.was.tng.iac.es/jobs/download/f1cde750-b342-11ed-8852-656428dacc6a/2022-12-12/r2963102.fit')
 #rss = fits.open('data/raw/2022-10-26/r2963269.fit') # raw data, not RSS!
-rss = fits.open('SV/20230512_13/single_3005695.fit')
+rss = fits.open(f'{work_dir}/{file_name}.fit')
 # rss = fits.open('./apm3.ast.cam.ac.uk/~dmurphy/ifu_exercise/L1/20190922/single_1004361.fit')
 # rss = fits.open('old/single_1004349.fit')
 # rss = fits.open('old/single_1004193.fit')
@@ -83,30 +85,33 @@ plt.savefig('MAG_R.pdf', bbox_inches='tight')
 plt.show()
 '''
 
-plt.scatter(fibtable['xposition'], fibtable['yposition'],
-            s=10, cmap='gist_stern_r',
-            vmin=16.5, vmax=25.5,
+mag_faint = 24.5
+mag_bright = 18.5
+plt.scatter(fibtable['fibrera'], fibtable['fibredec'],
+            s=10, cmap='nipy_spectral_r',
+            vmin=mag_bright, vmax=mag_faint,
             c=25.15 - 2.5*np.log10(fibtable['Meanflux_r']))
 plt.title('25.15 - 2.5*log10(Meanflux_r [ADU])')
 #plt.xlim(-2.5, 2.5)
 #plt.ylim(-2.5, 2.5)
 plt.gca().set_aspect('equal')
-plt.colorbar()
+cb = plt.colorbar()
+cb.ax.set_ylim(mag_faint, mag_bright)
 plt.tight_layout()
-plt.savefig('Meanflux_r.pdf', bbox_inches='tight')
+plt.savefig(f'{work_dir}/Meanflux_r.pdf', bbox_inches='tight')
 plt.show()
 
-plt.scatter(fibtable['xposition'], fibtable['yposition'],
-            s=50, cmap='gist_stern_r',
-            norm=colors.LogNorm(vmin=.01, vmax=100),
+plt.scatter(fibtable['fibrera'], fibtable['fibredec'],
+            s=10, cmap='nipy_spectral',
+            norm=colors.LogNorm(vmin=.5, vmax=50),
             c=fibtable['SNR'])
 plt.title('SNR')
-plt.xlim(-2.5, 2.5)
-plt.ylim(-2.5, 2.5)
+#plt.xlim(-2.5, 2.5)
+#plt.ylim(-2.5, 2.5)
 plt.gca().set_aspect('equal')
 plt.colorbar()
 plt.tight_layout()
-plt.savefig('SNR.pdf', bbox_inches='tight')
+plt.savefig(f'{work_dir}/SNR.pdf', bbox_inches='tight')
 plt.show()
 
 # %%

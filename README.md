@@ -1,17 +1,17 @@
 # WEAVE-FL
-Analysis of WEAVE first light data
 
-## Raw data
+Analysis of WEAVE data
 
-Not yet
+## L0 data
+
+single_rss.ipynb
 
 ## L1 datacubes
 
-red_supercube
 
-blue_supercube
+supercubes.ipynb
 
-supercubes
+(and older red_supercube, blue_supercube)
 
 ## L2 (APS)
 

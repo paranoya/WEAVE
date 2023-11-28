@@ -1,1 +1,1 @@
-/home/yago/work/science/colab/WEAVE/SV
+/home/yago/work/science/colab/weave/SV/
